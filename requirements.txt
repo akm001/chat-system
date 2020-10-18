@@ -1,1 +1,6 @@
-
+python3
+pip3
+flask
+flask_wtf
+python3-sqlalchemy
+mysql
