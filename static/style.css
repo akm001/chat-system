@@ -1,0 +1,14 @@
+
+input{
+    width: 150px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+form{
+    align-content: center;
+}
+
+a{
+    text-decoration: none;
+}
