@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message System | Login</title>
+        <link href="/static/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+    <div id="left">
+    <h1><a href="#">Welcome to my message system</a></h1>
+</div>
+    <div id="right">
+    {% if login_session['username'] %}
+
+    <p>{{ login_session['username'] }}
+    <a href="{{url_for('logout')}}"> Logout</a></p>
+    {% else %}
+    <a href="{{url_for('login')}}">Login</a>
+
+    {% endif %}
+</div>
+</header>
+
+<!--
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <p style="color: magenta">{{ message }}</p>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+-->
+
+<a href="{{ url_for('register') }}">Register</a>
+<pre/>
+<a href="{{ url_for('forget') }}">Forget Password</a>
+
+<pre/>
+<pre/>
+<form method="post" action="{{ url_for('login')}}">
+<input type="text" name="user_name" minlength="4" placeholder="User Name ...">
+<input type="password" name="pass" minlength="8" placeholder="Password ...">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <button type="submit" >Login</button>
+</form>
+
+</body>
+</html>

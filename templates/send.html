@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <div id="left">
+    <h1><a href="#">Welcome to my message system</a></h1>
+</div>
+    <div id="right">
+
+    <a href="{{url_for('read')}}"> Messages </a></p>
+
+    <a href="{{url_for('home')}}">Home</a>
+
+</div>
+</header>
+<pre/>
+
+<pre/>
+
+<form method="post" action="{{ url_for('send') }}">
+<input type="text" name="receiver" placeholder="Send To : "><pre/>
+<input type="text" name="msg" placeholder="Message" ><pre/>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <button type="submit">Send</button>
+
+</form>
+
+</body>
+</html>

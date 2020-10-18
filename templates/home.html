@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+<h1>Welcome {{ login_session['username'] }}</h1>
+
+<h5><a href="{{ url_for('logout') }}" >Logout</a></h5>
+<h5><a href="{{ url_for('chgpass') }}" >Change My Password</a></h5>
+<h5><a href="{{ url_for('send') }}" >Send MSGS</a></h5>
+<h5><a href="{{ url_for('read') }}" >Read MSGS</a></h5>
+
+</header>
+
+
+
+</body>
+</html>

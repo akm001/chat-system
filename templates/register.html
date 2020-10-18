@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div id="left">
+    <h1><a href="#">Welcome to my message system</a></h1>
+</div>
+    <div id="right">
+
+    <a href="{{url_for('register')}}"> Register </a></p>
+
+    <a href="{{url_for('login')}}">Login</a>
+
+</div>
+</header>
+
+<form method="post" action="{{ url_for('register') }}" >
+    <p><input type="text" name="fname" required placeholder="First Name">    <input type="text" name="lname" required placeholder="Last Name"></p>
+    <input type="text" minlength="4" name="user" required placeholder="User Name ..."/><pre/><input type="email" name="email" required placeholder="Email"/><pre/><input type="password" name="password1" minlength="8" required placeholder="Password at least 8 char."/><pre/><input type="password" name="password2" minlength="8" required placeholder="Confirm your password"/><pre/><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <button type="submit">Sign UP</button>
+</form>
+
+</body>
+</html>

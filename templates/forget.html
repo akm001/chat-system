@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forget Password</title>
+    <link href="/static/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+    <div id="left">
+    <h1><a href="#">Welcome to my message system</a></h1>
+</div>
+    <div id="right">
+
+    <a href="{{url_for('register')}}"> Register </a></p>
+
+    <a href="{{url_for('login')}}">Login</a>
+
+</div>
+</header>
+
+
+
+{% if sent==True %}
+    <p>Email has been sent to your mail, It is only valid for 30 Min</p>
+{% endif %}
+
+{% if sent==False %}
+    <p>Email has not been linked to any account!</p>
+{% endif %}
+{% if expired==True %}
+    <p style="color: red">That link has been expired, request a new one, notice it is valid for 30 minutes only.</p>
+
+{% endif %}
+
+{% if exist==False %}
+    <p style="color: red">It is not a valid URL, you can always reset your password</p>
+{% endif %}
+<pre/>
+<pre/>
+<pre/>
+
+
+<form method="post" action="{{ url_for('forget') }}">
+    <input type="email" placeholder="Email Address" name="mail"><pre/>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <button type="submit">Send Reset Link</button>
+</form>
+
+</body>
+</html>

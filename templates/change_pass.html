@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <div id="left">
+    <h1><a href="#">Welcome to my message system</a></h1>
+</div>
+    <div id="right">
+
+    <a href="{{url_for('read')}}"> Messages </a></p>
+
+    <a href="{{url_for('home')}}">Home</a>
+
+</div>
+</header>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <p style="color: magenta">{{ message }}</p>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form method="post" action="{{ url_for('chgpass') }}">
+<input type="password" name="oldpass" placeholder="Current Password">
+
+<input type="password" name="pass1" placeholder="New Password">
+
+<input type="password" name="pass2" placeholder="Confirm Password">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <button type="submit">Change Password</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Messages</title>
+        <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+
+<header>
+    <div id="left">
+    <h1><a href="#">Welcome to my message system</a></h1>
+</div>
+    <div id="right">
+
+    <a href="{{url_for('read')}}"> Messages </a></p>
+
+    <a href="{{url_for('home')}}">Home</a>
+
+</div>
+</header>
+
+{% if chats %}
+    <h1>Chats: </h1>
+{% for x in chats %}
+    <a href="/read/{{ x }}"><h3>{{ chats[x] }}</h3></a>
+{% endfor %}
+{% endif %}
+{% if msgs %}
+{% for x in msgs %}
+<div>
+<p>{{ x[0] }} : {{ x[1] }}</p>
+</div>
+{% endfor %}
+    <form action="{{ url_for('chat_user', id=chat_id) }}" method="post">
+    <input type="text" placeholder="reply ....." name="msg"/>
+    <input type="hidden" style="display: none" name="sender" value="{{ login_session['username'] }}" />
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <input type="submit" style="display: none" hidden/>
+    </form>
+{% endif %}
+</body>
+</html>
